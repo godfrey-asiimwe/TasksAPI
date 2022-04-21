@@ -6,7 +6,7 @@ from .models import Task
 
 class task(admin.ModelAdmin):
     list_display = (
-       'task_id','name', 'description','status')
+        'id','task_id', 'name', 'description', 'status')
     search_fields = ['name']
 
 

@@ -1,9 +1,11 @@
+import uuid
+
 from django.db import models
 
 
 # Create your models here.
 class Task(models.Model):
-    task_id = models.CharField(max_length=255, unique=True)
+    task_id = models.CharField( max_length=4,blank=True,editable=False,unique=True, default=uuid.uuid4)
     name = models.CharField(max_length=255, null=True, blank=True)
     description = models.CharField(max_length=1000, null=True, blank=True)
     start_date = models.DateField(null=True, blank=True)

@@ -29,6 +29,7 @@ def add_tasks(request):
         raise serializers.ValidationError('This data already exists')
 
     if task.is_valid():
+
         task.save()
         return Response(task.data)
     else:
