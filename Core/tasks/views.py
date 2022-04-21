@@ -14,7 +14,8 @@ def ApiOverview(request):
         'all_projects': '/all',
         'Add': '/create',
         'Update': '/update/pk',
-        'Delete': '/item/pk/delete'
+        'Delete': '/item/pk/delete',
+        'View': '/view/pk'
     }
 
     return Response(api_urls)
@@ -43,6 +44,18 @@ def view_tasks(request):
 
     if tasks:
         serializer = TaskSerializer(tasks, many=True)
+        return Response(serializer.data)
+    else:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+@api_view(['GET'])
+def view_tasksByID(request, pk):
+    # checking for the parameters from the URL
+    task = Task.objects.get(pk=pk)
+
+    if task:
+        serializer = TaskSerializer(task)
         return Response(serializer.data)
     else:
         return Response(status=status.HTTP_404_NOT_FOUND)
