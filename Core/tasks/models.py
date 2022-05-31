@@ -20,6 +20,7 @@ class Task(models.Model):
     projectId = models.CharField(max_length=255, null=True, blank=True)
     created_by = models.CharField(max_length=255, null=True, blank=True)
     responsible = models.CharField(max_length=255, null=True, blank=True)
+    observer = models.CharField(max_length=255, null=True, blank=True)
     created_on = models.DateTimeField(auto_now=True)
     updated_on = models.DateTimeField(auto_now=True)
 
